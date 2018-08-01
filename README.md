@@ -14,14 +14,16 @@ Summary: In order to create smooth animation between states of data, tweening is
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/r-tweenr-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/r-tweenr-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/r-tweenr-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/r-tweenr-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/r-tweenr-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/r-tweenr-feedstock/branch/master)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/r-tweenr-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/r-tweenr-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/r-tweenr-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/r-tweenr-feedstock)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/r-tweenr-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/r-tweenr-feedstock/branch/master)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/r-tweenr/badges/version.svg)](https://anaconda.org/conda-forge/r-tweenr)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/r-tweenr/badges/downloads.svg)](https://anaconda.org/conda-forge/r-tweenr)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-r--tweenr-green.svg)](https://anaconda.org/conda-forge/r-tweenr) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/r-tweenr.svg)](https://anaconda.org/conda-forge/r-tweenr) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/r-tweenr.svg)](https://anaconda.org/conda-forge/r-tweenr) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/r-tweenr.svg)](https://anaconda.org/conda-forge/r-tweenr) |
 
 Installing r-tweenr
 ===================
