@@ -1,5 +1,4 @@
-{% set version = '0.1.5' %}
-
+{% set version = '1.0.0' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,13 +9,13 @@ package:
 source:
   fn: tweenr_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/tweenr_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/tweenr/tweenr_{{ version }}.tar.gz
-  sha256: d8b6f85459796319b8bf0cb71478a17b5d3a0ace580ba3c8ebbb4a4a3bdc001a
+    - {{ cran_mirror }}/src/contrib/tweenr_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/tweenr/tweenr_{{ version }}.tar.gz
+  sha256: d045164692f311f6d73c48b0530db56a101439a646ea6c8c6aed377782a52865
 
 build:
   merge_build_host: True  # [win]
-  number: 1
+  number: 0
   skip: true  # [win32]
   rpaths:
     - lib/R/lib/
@@ -24,40 +23,47 @@ build:
 
 requirements:
   build:
-    - posix                # [win]
-    - {{ compiler('c') }}        # [unix]
-    - {{ compiler('m2w64_c') }}  # [win]
-    - {{ compiler('cxx') }}        # [unix]
-    - {{ compiler('m2w64_cxx') }}  # [win]
+    - {{ compiler('c') }}        # [not win]
+    - {{ compiler('cxx') }}      # [not win]
+    - {{native}}toolchain        # [win]
+    - {{posix}}filesystem        # [win]
+    - {{posix}}make
+    - {{posix}}sed               # [win]
+    - {{posix}}coreutils         # [win]
+    - {{posix}}zip               # [win]
   host:
     - r-base
-    - r-rcpp
-
+    - r-rcpp >=0.12.3
+    - r-farver
+    - r-magrittr
+    - r-rlang
   run:
     - r-base
-    - r-rcpp
+    - {{native}}gcc-libs         # [win]
+    - r-rcpp >=0.12.3
+    - r-farver
+    - r-magrittr
+    - r-rlang
 
 test:
   commands:
-    - $R -e "library('tweenr')"  # [not win]
+    - $R -e "library('tweenr')"           # [not win]
     - "\"%R%\" -e \"library('tweenr')\""  # [win]
 
 about:
   home: https://github.com/thomasp85/tweenr
-  license: GPL (>= 2)
+  license: MIT
   summary: In order to create smooth animation between states of data, tweening is necessary.
-    This package provides a range of functions for creating tweened data that plugs
-    right into functions such as gg_animate() from the 'gganimate' package. Furthermore
-    it adds a number of vectorized interpolaters for common R data types such as numeric,
-    date and colour.
-  license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'  # [unix]
-  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-3'  # [win]
+    This package provides a range of functions for creating tweened data that can be
+    used as basis for animation. Furthermore  it adds a number of vectorized interpolaters
+    for common R data  types such as numeric, date and colour.
+  license_family: MIT
 
 extra:
   recipe-maintainers:
-    - cbrueffer
     - johanneskoester
     - bgruening
     - daler
     - jdblischak
+    - cbrueffer
+    - dbast
