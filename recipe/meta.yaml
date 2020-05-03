@@ -1,4 +1,4 @@
-{% set version = '1.0.1' %}
+{% set version = "1.0.1" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -14,8 +14,8 @@ source:
   sha256: efd68162cd6d5a4f6d833dbf785a2bbce1cb7b9f90ba3fb060931a4bd705096b
 
 build:
-  merge_build_host: True  # [win]
-  number: 1001
+  merge_build_host: true  # [win]
+  number: 1002
   skip: true  # [win32]
   rpaths:
     - lib/R/lib/
@@ -27,11 +27,11 @@ requirements:
     - {{ compiler('cxx') }}      # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
     - {{ compiler('m2w64_cxx') }}        # [win]
-    - {{posix}}filesystem        # [win]
-    - {{posix}}make
-    - {{posix}}sed               # [win]
-    - {{posix}}coreutils         # [win]
-    - {{posix}}zip               # [win]
+    - {{ posix }}filesystem        # [win]
+    - {{ posix }}make
+    - {{ posix }}sed               # [win]
+    - {{ posix }}coreutils         # [win]
+    - {{ posix }}zip               # [win]
   host:
     - r-base
     - r-rcpp >=0.12.3
@@ -40,7 +40,7 @@ requirements:
     - r-rlang
   run:
     - r-base
-    - {{native}}gcc-libs         # [win]
+    - {{ native }}gcc-libs         # [win]
     - r-rcpp >=0.12.3
     - r-farver
     - r-magrittr
@@ -54,12 +54,12 @@ test:
 about:
   home: https://github.com/thomasp85/tweenr
   license: MIT
-  summary: In order to create smooth animation between states of data, tweening is necessary.
-    This package provides a range of functions for creating tweened data that can be
-    used as basis for animation. Furthermore it adds a number of vectorized interpolaters
-    for common R data  types such as numeric, date and colour.
+  summary: In order to create smooth animation between states of data, tweening is necessary. This package provides a range of functions for creating tweened data that can be used as basis for animation. Furthermore it adds a number of vectorized interpolaters for common R data  types such as numeric, date and colour.
   license_family: MIT
 
+  license_file:
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/MIT
+    - LICENSE
 extra:
   recipe-maintainers:
     - conda-forge/r
