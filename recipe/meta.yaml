@@ -1,4 +1,4 @@
-{% set version = "1.0.1" %}
+{% set version = "1.0.2" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -11,11 +11,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/tweenr_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/tweenr/tweenr_{{ version }}.tar.gz
-  sha256: efd68162cd6d5a4f6d833dbf785a2bbce1cb7b9f90ba3fb060931a4bd705096b
+  sha256: 1805f575da6705ca4e5ec1c4605222fc826ba806d9ff9af41770294fe08ff69f
 
 build:
   merge_build_host: true  # [win]
-  number: 1002
+  number: 0
   skip: true  # [win32]
   rpaths:
     - lib/R/lib/
