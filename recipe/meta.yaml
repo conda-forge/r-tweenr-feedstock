@@ -7,7 +7,6 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: tweenr_{{ version }}.tar.gz
   url:
     - {{ cran_mirror }}/src/contrib/tweenr_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/tweenr/tweenr_{{ version }}.tar.gz
@@ -16,7 +15,6 @@ source:
 build:
   merge_build_host: true  # [win]
   number: 0
-  skip: true  # [win32]
   rpaths:
     - lib/R/lib/
     - lib/
@@ -56,16 +54,10 @@ about:
   license: MIT
   summary: In order to create smooth animation between states of data, tweening is necessary. This package provides a range of functions for creating tweened data that can be used as basis for animation. Furthermore it adds a number of vectorized interpolaters for common R data  types such as numeric, date and colour.
   license_family: MIT
-
   license_file:
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/MIT
     - LICENSE
+
 extra:
   recipe-maintainers:
     - conda-forge/r
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
-    - cbrueffer
-    - dbast
