@@ -1,6 +1,5 @@
 {% set version = "2.0.3" %}
 {% set posix = 'm2-' if win else '' %}
-{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-tweenr
@@ -13,8 +12,7 @@ source:
   sha256: efabe512a45d653787ba40f87f3e23add4037f88573a102fa9ac7a5ff43c8cbe
 
 build:
-  merge_build_host: true  # [win]
-  number: 0
+  number: 1
   rpaths:
     - lib/R/lib/
     - lib/
@@ -28,7 +26,9 @@ requirements:
     - r-rlang                    # [build_platform != target_platform]
     - r-vctrs                    # [build_platform != target_platform]
     - {{ compiler('c') }}              # [not win]
+    - {{ stdlib("c") }}                # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
+    - {{ stdlib("m2w64_c") }}          # [win]
     - {{ compiler('cxx') }}            # [not win]
     - {{ compiler('m2w64_cxx') }}      # [win]
     - {{ posix }}filesystem        # [win]
@@ -45,7 +45,6 @@ requirements:
     - r-vctrs
   run:
     - r-base
-    - {{ native }}gcc-libs         # [win]
     - r-cpp11 >=0.4.2
     - r-farver
     - r-magrittr
